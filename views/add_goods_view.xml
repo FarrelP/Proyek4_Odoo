@@ -1,0 +1,54 @@
+<odoo>    
+<record id="view_form_emp_ideas" model="ir.ui.view">
+        <field name="name">Add New Goods</field>
+        <field name="model">wr.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="submit_new_goods" type="object" string="Submit" class="oe_highlight"/>
+                </header>
+                <sheet>
+                <div class="oe_title">
+                    <group name="group_top">
+                            <label for="name" string="Goods Name"/>
+                            <h1>
+                                <field name="name" width="40"/>
+                            </h1>
+                    </group>
+                    </div>
+                    <group name="group_bottom">
+                        <group name="group_left">
+                            <field name="owner"/>
+                            <field name="goods_size"/>
+                            <field name="date_in"/>
+                            <field name="date_out"/>
+                        </group>
+                        <group name="group_right">
+                            <field name="qty"/>
+                            <field name="total_price"/>
+                        </group>   
+                    </group>
+                    <notebook>
+                        <page name="description" string="Description">
+                            <field name="description"></field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_tree_goods_list" model="ir.ui.view">
+        <field name="name">Goods list</field>
+        <field name="model">wr.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="owner"/>
+                <field name="goods_size"/>
+                <field name="date_in"/>
+                <field name="date_out"/>
+                <field name="qty"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

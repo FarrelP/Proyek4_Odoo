@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<odoo>
+    <act_window id="action_add_goods"
+        name="Create a new goods"
+        res_model="wr.model"
+        view_mode="tree,form" />
+    <menuitem id="menu_warehouse"
+        name="B5 Warehouse"
+        action="action_add_goods" />
+</odoo>
