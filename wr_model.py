@@ -23,3 +23,4 @@ class wrModel(models.Model):
             d2=datetime.strptime(str(self.date_out),'%Y-%m-%d')
             d3=d2-d1
             self.total_price = d3.days*3300*self.goods_size
+

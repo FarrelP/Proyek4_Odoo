@@ -1,10 +1,38 @@
 <?xml version="1.0"?>
 <odoo>
     <act_window id="action_add_goods"
-        name="Create a new goods"
+        name="Items in"
         res_model="wr.model"
         view_mode="tree,form" />
+	<act_window id="action_goods_out"
+        name="Items Out"
+        res_model="wr.model"
+        view_mode="tree,form" />
+		
     <menuitem id="menu_warehouse"
         name="B5 Warehouse"
         action="action_add_goods" />
+	
+	<menuitem id="side_menu_inbound"
+        name="Inbound Task"
+		parent="menu_warehouse"
+        action="action_add_goods"	/>
+		
+	<menuitem id="side_menu_items_in"
+        name="Items In"
+        action="action_add_goods"
+        parent="side_menu_inbound"
+    />
+	
+	<menuitem id="side_menu_outbound"
+        name="Outbound Task"
+		parent="menu_warehouse"
+        action="action_goods_out"	/>
+	
+	<menuitem id="side_menu_items_out"
+        name="Items Out"
+        action="action_goods_out"
+        parent="side_menu_outbound"
+    />
+	
 </odoo>

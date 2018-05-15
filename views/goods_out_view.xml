@@ -1,12 +1,10 @@
 <odoo>    
 <record id="view_form_emp_ideas" model="ir.ui.view">
-        <field name="name">Add New Goods</field>
+        <field name="name">Goods Out from Warehouse</field>
         <field name="model">wr.model</field>
         <field name="arch" type="xml">
             <form>
-                <header>
-                    <button name="submit_new_goods" type="object" string="Submit" class="oe_highlight"/>
-					
+                <header>					
                 </header>
                 <sheet>
                 <div class="oe_title">
@@ -42,7 +40,7 @@
         <field name="name">Goods list</field>
         <field name="model">wr.model</field>
         <field name="arch" type="xml">
-            <tree create="true">
+            <tree>
                 <field name="name"/>
                 <field name="owner"/>
                 <field name="goods_size"/>
