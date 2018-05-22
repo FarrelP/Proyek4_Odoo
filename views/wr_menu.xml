@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
     <act_window id="action_add_goods"
-        name="Items in"
+        name="Goods in"
         res_model="wr.model"
         view_mode="tree,form" />
 		
@@ -9,16 +9,14 @@
         name="B5 Warehouse"
         action="action_add_goods" />
 	
-	<menuitem id="side_menu_inbound"
-        name="Inbound Task"
+	<menuitem id="side_menu_warehouse"
+        name="Warehouse"
 		parent="menu_warehouse"
         action="action_add_goods"	/>
 		
 	<menuitem id="side_menu_items_in"
-        name="Items In"
+        name="Goods List"
         action="action_add_goods"
-        parent="side_menu_inbound"
+        parent="side_menu_warehouse"
     />
-	
 </odoo>
-
