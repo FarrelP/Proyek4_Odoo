@@ -28,9 +28,9 @@
 							<field name="width"/>
                             <field name="qty"/>
                         </group>
-                        <group class="oe_subtotal_footer oe_right" colspan="4" name="sale_total">
-                            <field name="total_price" widget='monetary' options="{'currency_field': 'currency_id'}" string="Total Price" attrs="{'readonly':'true'}" />
-                        </group>	
+						<group class="oe_subtotal_footer oe_right" colspan="4" name="total_price">
+                            <field name="total_price" widget='monetary' options="{'currency_field': 'currency_id'}" string="Total Price"/>
+                        </group>
                     </group>   
                     <notebook>
                         <page name="description" string="Description">
