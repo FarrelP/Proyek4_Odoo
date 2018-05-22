@@ -4,10 +4,6 @@
         name="Items in"
         res_model="wr.model"
         view_mode="tree,form" />
-	<act_window id="action_goods_out"
-        name="Items Out"
-        res_model="wr.model"
-        view_mode="tree,form" />
 		
     <menuitem id="menu_warehouse"
         name="B5 Warehouse"
@@ -24,15 +20,5 @@
         parent="side_menu_inbound"
     />
 	
-	<menuitem id="side_menu_outbound"
-        name="Outbound Task"
-		parent="menu_warehouse"
-        action="action_goods_out"	/>
-	
-	<menuitem id="side_menu_items_out"
-        name="Items Out"
-        action="action_goods_out"
-        parent="side_menu_outbound"
-    />
-	
 </odoo>
+
