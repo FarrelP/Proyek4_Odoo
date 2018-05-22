@@ -4,7 +4,9 @@
         <field name="model">wr.model</field>
         <field name="arch" type="xml">
             <form>
-                <header>					
+                <header>
+					<button name="submit_new_goods" type="object" string="Submit" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,qin,iw,out"/>
                 </header>
                 <sheet>
                 <div class="oe_title">
