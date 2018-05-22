@@ -9,6 +9,10 @@ class wrModel(models.Model):
     #Deskripsi model
 
     name = fields.Char('Name', required=True)
+
+    #variabel ini entar munculnya pas di report invoice. bukan disini harusnya
+    sequence_id = fields.Char('Sequence ID', readonly=True)
+    
     owner = fields.Char('Owner', required=True)
     length = fields.Integer('Length(m)')
     width = fields.Integer('Width(m)')
@@ -36,3 +40,9 @@ class wrModel(models.Model):
     @api.multi
     def submit_new_goods(self):
         self.state = 'iw'
+    
+    #Override method
+    @api.model
+    def create(self, vals):
+        vals['sequence_id'] = self.env['ir.sequence'].next_by_code('seq.inv')
+        return super(wrModel, self).create(vals)
