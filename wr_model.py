@@ -8,7 +8,7 @@ class wrModel(models.Model):
 
     #Deskripsi model
 
-    name = fields.Char('Name', required=True)
+    name = fields.Char('Package Name', required=True)
 
     #variabel ini entar munculnya pas di report invoice. bukan disini harusnya
     sequence_id = fields.Char('Sequence ID', readonly=True)
