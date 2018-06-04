@@ -1,19 +1,20 @@
 <odoo>    
-<record id="view_form_emp_ideas" model="ir.ui.view">
+<record id="view_form_wr_model" model="ir.ui.view">
         <field name="name">Add New Goods</field>
         <field name="model">wr.model</field>
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="submit_new_goods" type="object" string="Submit" class="oe_highlight"/>
-                    <field name="state" widget="statusbar" statusbar_visible="new,qin,iw,out"/>
+                    <button name="submit_new_goods" type="object" string="Submit" class="oe_highlight"  attrs="{'invisible':[('state','!=','new')]}"/>
+					<button name="submit_goods_out" type="object" string="Goods Out" class="oe_highlight"  attrs="{'invisible':[('state','!=','iw')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,iw,out"/>
                 </header>
                 <sheet>
                 <group name="group_top">
                         <group name="group_left">
                             <div class="oe_title">
-                                <label class="oe_edit_only" for="name" string="Product Name"/>
-                                <h1><field name="name" placeholder="Product Name"/></h1>
+                                <label class="oe_edit_only" for="name"/>
+                                <h1><field name="name"/></h1>
                             </div>
                         </group>
                     </group>
@@ -27,9 +28,11 @@
 							<field name="length"/>
 							<field name="width"/>
                             <field name="qty"/>
-                            <field name="total_price"/>
-                        </group>   
-                    </group>
+                        </group>
+						<group class="oe_subtotal_footer oe_right" colspan="4" name="total_price">
+                            <field name="total_price" widget='monetary' options="{'currency_field': 'currency_id'}" string="Total Price"/>
+                        </group>
+                    </group>   
                     <notebook>
                         <page name="description" string="Description">
                             <field name="description"></field>
@@ -51,7 +54,6 @@
                 <field name="date_in"/>
                 <field name="date_out"/>
                 <field name="qty"/>
-				<field name="total_price"/>
             </tree>
         </field>
     </record>
