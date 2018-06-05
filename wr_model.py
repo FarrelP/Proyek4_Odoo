@@ -40,6 +40,10 @@ class wrModel(models.Model):
     @api.multi
     def submit_new_goods(self):
         self.state = 'iw'
+		
+    @api.multi
+    def submit_goods_out(self):
+        self.state = 'out'
     
     #Override method
     @api.model

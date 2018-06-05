@@ -5,8 +5,9 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="submit_new_goods" type="object" string="Submit" class="oe_highlight"  attrs="{'invisible':[('state','=','iw')]}"/>
-                    <field name="state" widget="statusbar" statusbar_visible="new,qin,iw,out"/>
+                    <button name="submit_new_goods" type="object" string="Submit" class="oe_highlight"  attrs="{'invisible':[('state','!=','new')]}"/>
+					<button name="submit_goods_out" type="object" string="Goods Out" class="oe_highlight"  attrs="{'invisible':[('state','!=','iw')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,iw,out"/>
                 </header>
                 <sheet>
                 <group name="group_top">
