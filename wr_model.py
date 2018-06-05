@@ -20,12 +20,12 @@ class wrModel(models.Model):
     date_in = fields.Date('Date In')
     date_out = fields.Date('Date Out')
     description = fields.Text('')
-    total_price = fields.Integer(string="Total price")
+	total_price = fields.Monetary(string='Total', store=True, readonly=True, track_visibility='always')
     qty = fields.Integer('Quantity')
     state = fields.Selection([
         ('new', 'New'),
         ('iw', 'In Warehouse'),
-        ('out', 'out'),
+        ('out', 'Out'),
         ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='new')
 
     @api.onchange('date_in', 'date_out','total_price','length','width','qty')
@@ -44,5 +44,5 @@ class wrModel(models.Model):
     #Override method
     @api.model
     def create(self, vals):
-        vals['sequence_id'] = self.env['ir.sequence'].next_by_code('seq.inv')
+        vals['sequence_id'] = self.env['ir.sequence'].next_by_code('seq.pck')
         return super(wrModel, self).create(vals)
