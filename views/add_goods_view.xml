@@ -47,6 +47,7 @@
         <field name="model">wr.model</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence_id"/>
                 <field name="name"/>
                 <field name="owner"/>
                 <field name="length"/>

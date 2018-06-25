@@ -67,6 +67,5 @@ class wrModel(models.Model):
 
     @api.model
     def create(self, vals):
-        vals['sequence_id'] = self.env['ir.sequence'
-                                       ].next_by_code('seq.pck')
+        vals['sequence_id'] = self.env['ir.sequence'].next_by_code('seq.inv')
         return super(wrModel, self).create(vals)
