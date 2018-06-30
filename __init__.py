@@ -1,1 +1,1 @@
-from . import wr_model
+from . import models

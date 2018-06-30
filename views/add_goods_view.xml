@@ -55,7 +55,24 @@
                 <field name="date_in"/>
                 <field name="date_out"/>
                 <field name="qty"/>
+                <field name="total_price"/>
             </tree>
         </field>
     </record>
+    <record id="wizard_view" model="ir.ui.view">
+            <field name="name">wizard.view</field>
+            <field name="model">warning.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Hi i am wizard">
+                    <group>
+                        <field name="date_out"/>
+                    </group>
+                    <footer>
+                        <button string="Cancel" 
+                            class="btn-default" 
+                            special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
 </odoo>
