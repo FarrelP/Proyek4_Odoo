@@ -10,8 +10,8 @@ class wrModel(models.Model):
     name = fields.Char('Package Name', required=True)
     sequence_id = fields.Char('Sequence ID', readonly=True)
     owner = fields.Char('Owner', required=True)
-    length = fields.Integer('Length(m)')
-    width = fields.Integer('Width(m)')
+    dimen_length = fields.Integer('Length')
+    dimen_width = fields.Integer('Width')
     total_space_taken = fields.Integer()
     date_in = fields.Date('Date In', default=datetime.today(), readonly=True)
     date_out = fields.Date('Date Out')
@@ -27,12 +27,19 @@ class wrModel(models.Model):
         track_visibility='onchange',
         default='new',
     )
+    location = fields.Selection(
+        [('place1', 'Place 1'), ('place2', 'Place 2'), ('place3', 'Place 3')],
+        string='Location',
+        required=True,
+        default='place1',
+    )
     calculated_day = fields.Integer()
 
     @api.onchange(
         'total_price',
         'date_out',
-        'length',
+        'dimen_length',
+        'dimen_width',
         'width',
         'qty',
     )
@@ -42,7 +49,7 @@ class wrModel(models.Model):
             d2 = datetime.strptime(str(self.date_out), '%Y-%m-%d')
             d3 = d2 - d1
             self.calculated_day = d3.days
-            self.total_space_taken = self.length * self.width*math.ceil(self.qty / 3.0)
+            self.total_space_taken = self.dimen_length * self.dimen_width*math.ceil(self.qty / 3.0)
             self.total_price = d3.days * 3300 * self.total_space_taken
 
     @api.multi
@@ -67,18 +74,3 @@ class wrModel(models.Model):
             }
             self.date_out = False
             return {'warning':mes}
-        # wizard_form = self.env.ref('Custom Warehouse.wizard_view,False')
-        # view_id = self.env['warning.wizard']
-        # param = {'date_out':self.date_out}
-        # new = view_id.create(param)
-        # return{
-        #     'name':'Test',
-        #     'type':'ir.actions.act_window',
-        #     'res_model':'warning.wizard',
-        #     'res_id':new.id,
-        #     'view_id':wizard_form.id,
-        #     'view_type':'form',
-        #     'view_mode':'form',
-        #     'target':'new',
-        #     'context': self.env.context
-        # }

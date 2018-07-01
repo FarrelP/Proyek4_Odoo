@@ -22,11 +22,12 @@
                         <group name="group_left">
                             <field name="date_in"/>
                             <field name="date_out"/>
+                            <field name="location"/>
                             <field name="owner"/>
                         </group>
                         <group name="group_right">
-							<field name="length"/>
-							<field name="width"/>
+                            <field name="dimen_length"/>
+                            <field name="dimen_width"/>
                             <field name="qty"/>
                         </group>
 						<group class="oe_subtotal_footer oe_right" colspan="4" name="total_price">
@@ -50,29 +51,25 @@
                 <field name="sequence_id"/>
                 <field name="name"/>
                 <field name="owner"/>
-                <field name="length"/>
-                <field name="width"/>
+                <field name="location"/>
                 <field name="date_in"/>
                 <field name="date_out"/>
+                <field name="dimen_length"/>
+                <field name="dimen_width"/>
                 <field name="qty"/>
                 <field name="total_price"/>
             </tree>
         </field>
     </record>
-    <record id="wizard_view" model="ir.ui.view">
-            <field name="name">wizard.view</field>
-            <field name="model">warning.wizard</field>
+        <record id="view_goods_filter" model="ir.ui.view">
+            <field name="name">wr.filter</field>
+            <field name="model">wr.model</field>
             <field name="arch" type="xml">
-                <form string="Hi i am wizard">
-                    <group>
-                        <field name="date_out"/>
+                <search string="Search Goods">
+                    <group expand="1" string="Group By">
+                        <filter name="location_type" domain="[]" string="Location" context="{'group_by':'location'}"/>
                     </group>
-                    <footer>
-                        <button string="Cancel" 
-                            class="btn-default" 
-                            special="cancel" />
-                    </footer>
-                </form>
+                </search>
             </field>
         </record>
 </odoo>
