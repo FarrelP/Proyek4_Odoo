@@ -10,14 +10,14 @@ class wrModel(models.Model):
     name = fields.Char('Package Name', required=True)
     sequence_id = fields.Char('Sequence ID', readonly=True)
     owner = fields.Char('Owner', required=True)
-    dimen_length = fields.Integer('Length')
-    dimen_width = fields.Integer('Width')
+    dimen_length = fields.Integer('Length', default=False)
+    dimen_width = fields.Integer('Width', default=False)
     total_space_taken = fields.Integer()
     date_in = fields.Date('Date In', default=datetime.today(), readonly=True)
     date_out = fields.Date('Date Out')
     description = fields.Text('')
     total_price = fields.Integer('Total Price')
-    qty = fields.Integer('Quantity')
+    qty = fields.Integer('Quantity', default=False)
     state = fields.Selection(
         [('new', 'New'), ('iw', 'In Warehouse'), ('out', 'Out')],
         string='Status',
@@ -64,6 +64,36 @@ class wrModel(models.Model):
     def create(self, vals):
         vals['sequence_id'] = self.env['ir.sequence'].next_by_code('seq.inv')
         return super(wrModel, self).create(vals)
+    
+    @api.onchange('dimen_length')
+    def validate_length(self):
+        if self.dimen_length < 0:
+            self.dimen_length = False
+            mes = {
+                    'title': 'Invalid value',
+                    'message': 'Negative number and zero value are not allowed.'
+                }
+            return {'warning':mes}
+    
+    @api.onchange('dimen_width')
+    def validate_width(self):
+        if self.dimen_width < 0:
+            self.dimen_width = False
+            mes = {
+                    'title': 'Invalid value',
+                    'message': 'Negative number and zero value are not allowed.'
+                }
+            return {'warning':mes}
+    
+    @api.onchange('qty')
+    def validate_quantity(self):
+        if self.qty < 0:
+            self.qty = False
+            mes = {
+                    'title': 'Invalid value',
+                    'message': 'Negative number and zero value are not allowed.'
+                }
+            return {'warning':mes}
     
     @api.onchange('date_out')
     def call_warning(self):

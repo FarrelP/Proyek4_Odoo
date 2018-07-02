@@ -54,9 +54,9 @@
                 <field name="location"/>
                 <field name="date_in"/>
                 <field name="date_out"/>
-                <field name="dimen_length"/>
+                <!-- <field name="dimen_length"/>
                 <field name="dimen_width"/>
-                <field name="qty"/>
+                <field name="qty"/> -->
                 <field name="total_price"/>
             </tree>
         </field>
@@ -85,9 +85,9 @@
                 <field name="state"/>
                 <field name="date_in"/>
                 <field name="date_out"/>
-                <field name="dimen_length"/>
+                <!-- <field name="dimen_length"/>
                 <field name="dimen_width"/>
-                <field name="qty"/>
+                <field name="qty"/> -->
                 <field name="total_price"/>
             </tree>
         </field>
