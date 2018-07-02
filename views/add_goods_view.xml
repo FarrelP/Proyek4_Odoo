@@ -67,8 +67,37 @@
             <field name="arch" type="xml">
                 <search string="Search Goods">
                     <group expand="1" string="Group By">
-                        <filter name="location_type" domain="[]" string="Location" context="{'group_by':'location'}"/>
+                        <filter name="location_type" domain="[['state','!=','out']]" string="Location" context="{'group_by':'location'}"/>
                     </group>
+                </search>
+            </field>
+        </record>
+		
+		    <record id="view_tree_history_list" model="ir.ui.view">
+        <field name="name">Goods list</field>
+        <field name="model">wr.model</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <field name="sequence_id"/>
+                <field name="name"/>
+                <field name="owner"/>
+				<field name="location"/>
+                <field name="state"/>
+                <field name="date_in"/>
+                <field name="date_out"/>
+                <field name="dimen_length"/>
+                <field name="dimen_width"/>
+                <field name="qty"/>
+                <field name="total_price"/>
+            </tree>
+        </field>
+    </record>
+        <record id="view_history_filter" model="ir.ui.view">
+            <field name="name">wr.filter</field>
+            <field name="model">wr.model</field>
+            <field name="arch" type="xml">
+			<search string="History List">
+                <filter string="History List" name="history_list" domain="[['state','=','out']]"/>
                 </search>
             </field>
         </record>
