@@ -1,91 +1,81 @@
-<?xml version="1.0" ?>
-
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<report
+<report
 		id="action_report"
 		model="wr.model"
 		string="Print"
 		report_type="qweb-pdf"
 		name="warehouse-report.report_template"/>
-		
-	<template id="report_template">
+     
+     
+<template id="report_template">
 		<t t-call="report.html_container">
 			<t t-foreach="docs" t-as="doc">
 				<t t-call="report.external_layout">
 					<div class="page">
 						<div>
-						<div class="row" style="margin-top:+250px;">
-							<div class="col-xs-6">
-							</div>
-						</div>
-						
-						<div class="row" style="margin-top:+80px;" t-if="doc.sequence_id">
-							<div class="col-xs-6">
-								<strong Style="font-size:20px">Invoice ID</strong>
-								<p Style="font-size:15px" t-field="doc.sequence_id"/>
-							</div>
-						</div>
-						
-						<div class="row" style="margin-top:+80px;" t-if="doc.name">
-							<div class="col-xs-6">
-								<strong Style="font-size:20px">Name</strong>
-								<p Style="font-size:15px" t-field="doc.name"/>
-							</div>
-						</div>
-						<div class="row" style="margin-top:+50px;" t-if="doc.owner">
-							<div class="col-xs-4">
-								<strong Style="font-size:20px">Owner</strong>
-								<p Style="font-size:15px" t-field="doc.owner"/>
-							</div>
-							<div class="col-xs-4">
-								<strong Style="font-size:20px">Date In</strong>
-								<p Style="font-size:15px" t-field="doc.date_in"/>
-							</div>
-							<div class="col-xs-4">
-								<strong Style="font-size:20px">Date Out</strong>
-								<p Style="font-size:15px" t-field="doc.date_out"/>
-							</div>
-						</div>
-						<div class="row" style="margin-top:+50px;" t-if="doc.length">
-							<div class="col-xs-4">
-								<strong Style="font-size:20px">Length</strong>
-								<p Style="font-size:15px" t-field="doc.length"/>
-							</div>
-							<div class="col-xs-4">
-								<strong Style="font-size:20px">Width</strong>
-								<p Style="font-size:15px" t-field="doc.width"/>
-							</div>
-							<div class="col-xs-4">
-								<strong Style="font-size:20px">Qantity</strong>
-								<p Style="font-size:15px" t-field="doc.qty"/>
-							</div>
-						</div>
-						<div class="row" style="margin-top:+50px;" t-if="doc.description">
-							<div class="col-xs-6">
-								<strong Style="font-size:20px">Description</strong>
-								<p Style="font-size:15px" t-field="doc.description"/>
-							</div>
-						</div>
-						<div class="row" style="margin-top:+100px;">
-								<div class="col-xs-10">
-									<table class="table table-condensed" style="border: 2px solid black;">
-										<tr class="border-black" style="background-color:grey; color:white;">
-											<th style="width:50%;">
-												<strong>Total Price</strong>
-											</th>
-											
-										</tr>
-										
-										<tr class="border-black">
-											<td style="width:20%;">
-												<span t-field="doc.total_price"/>
-											</td>
-										</tr>
-									</table>
+							<div class="row" style="margin-top:+200px;">
+								<div class="col-xs-6">
 								</div>
+							</div>
+                     
+							<!-- JUDUL REPORT-->
+							 
+							<h2 class="text-center">INVOICE</h2>
+							
+							<div class="row" style="margin-top:+100px;">
+								<div class="col-xs-6">
+								</div>
+							</div>
+				 
+							<!-- INFORMASI HEADER -->
+							 
+							<table class="table">
+								<tr>
+									<td><strong>Invoice ID</strong></td>
+									<td><span t-field="doc.sequence_id"/></td>
+									<td><strong>Owner</strong></td>
+									<td><span t-field="doc.owner"/></td>
+								</tr>
+								<tr>
+									<td><strong>Date In</strong></td>
+									<td><span t-field="doc.date_in"/></td>
+									<td><strong>Date Out</strong></td>
+									<td><span t-field="doc.date_out"/></td>
+								</tr>
+							</table>
+							 
+							<div class="row" style="margin-top:+80px;">
+								<div class="col-xs-6">
+								</div>
+							</div>
+							 
+							<table class="table table-bordered" style="table-layout:auto">
+								<thead>
+									<tr>
+										<th class="text-center">Name</th>
+										<th class="text-center">Width</th>
+										<th class="text-center">Length</th>
+										<th class="text-center">Qty</th>
+										<th class="text-center">Price</th>
+										
+									</tr>
+							   </thead>
+							   <tbody>
+									
+										<tr>
+											<td><span t-field="doc.name"/></td>
+											<td><span t-field="doc.dimen_width"/></td>
+											<td><span t-field="doc.dimen_length"/></td>
+											<td><span t-field="doc.qty"/></td>
+											<td><span t-field="doc.total_price"/></td>
+										</tr>
+								
+								</tbody>
+							</table>
+         
 						</div>
-					</div>
-					</div>	
+					</div>						
 				</t>
 			</t>	
 		</t>
