@@ -65,8 +65,8 @@
 									
 										<tr>
 											<td><span t-field="doc.name"/></td>
-											<td><span t-field="doc.width"/></td>
-											<td><span t-field="doc.length"/></td>
+											<td><span t-field="doc.dimen_width"/></td>
+											<td><span t-field="doc.dimen_length"/></td>
 											<td><span t-field="doc.qty"/></td>
 											<td><span t-field="doc.total_price"/></td>
 										</tr>
